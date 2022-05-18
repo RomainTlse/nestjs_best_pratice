@@ -1,0 +1,29 @@
+name: CI
+on: push
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout ✅
+        uses: actions/checkout@v2
+      - name: Setup 🏗
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16.14.0
+          cache: 'npm'
+      - name: Install ⚙️
+        run: npm ci
+      - name: ESLint
+        run: npm run lint:ci
+      - name: Prettier
+        run: npm run format:check
+      - name: Test Unitaire 📋
+        run: npm run test:cov
+      - name: Build 🛠
+        run: npm run build
+      - name: Archive build 🛠
+        if: success()
+        uses: actions/upload-artifact@v1
+        with:
+          name: deploy_dist
+          path: dist
