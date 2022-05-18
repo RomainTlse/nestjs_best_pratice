@@ -12,3 +12,4 @@
 - Mise en place CI/CD
 - Mise en place Fastify
 - Mise en place de Swagger
+- Mise en place de Docker
