@@ -72,3 +72,11 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
+`npm install --save-dev pretty-quick husky @commitlint/config-conventional @commitlint/cli @commitlint/cz-commitlint commitizen`
+
+npx husky-init && npm install && npx husky add .husky/pre-push "ng build --aot true"
+
+add commit-msg dans .husky
+
+add commitlint.config.ts
