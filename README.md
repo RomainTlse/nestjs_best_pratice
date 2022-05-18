@@ -117,3 +117,9 @@ https://github.com/nestjs/nest/blob/master/sample/10-fastify/src/main.ts
 swagger
 
 npm install --save @nestjs/swagger fastify-swagger
+
+docker-compose up dev
+docker-compose up prod
+docker-compose up -d prod
+
+https://dev.to/erezhod/setting-up-a-nestjs-project-with-docker-for-back-end-development-30lg
