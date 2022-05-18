@@ -113,3 +113,7 @@ npm i --save @nestjs/platform-fastify
 https://github.com/nestjs/nest/blob/master/sample/10-fastify/src/main.ts
 
 /////
+
+swagger
+
+npm install --save @nestjs/swagger fastify-swagger
