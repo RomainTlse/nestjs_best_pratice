@@ -9,3 +9,5 @@
 - Mise en place de prettier
 - Mise en place de husky
 - Mise en place de commitlint
+- Mise en place CI/CD
+- Mise en place Fastify
