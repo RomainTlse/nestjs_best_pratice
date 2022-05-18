@@ -80,3 +80,28 @@ npx husky-init && npm install && npx husky add .husky/pre-push "ng build --aot t
 add commit-msg dans .husky
 
 add commitlint.config.ts
+
+## Mise en place déploiement continue
+
+### Référence
+
+https://dev.to/sandeepbalachandran/how-to-build-and-deploy-angular-application-to-surge-using-github-actions-38h9
+https://localcoder.org/only-run-job-on-specific-branch-with-github-actions
+
+### Installation
+
+`npm install surge --save-dev`
+
+### Configuration
+
+`node_modules/.bin/surge login`
+`./node_modules/.bin/surge -p dist/ --domain nestjs-best-pratice-stage.surge.sh`
+
+Créer un token, si ça n'a pas été fait :
+
+`./node_modules/.bin/surge token`
+
+Définir `SURGE_DOMAIN` dans github avec `angular-best-pratice-stage.surge.sh`:
+Définir `SURGE_TOKEN` dans github avec le token créé précédement :
+
+`settings` -> `Secrets` -> `New repository secret`
