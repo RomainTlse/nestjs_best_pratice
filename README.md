@@ -105,3 +105,11 @@ Définir `SURGE_DOMAIN` dans github avec `angular-best-pratice-stage.surge.sh`:
 Définir `SURGE_TOKEN` dans github avec le token créé précédement :
 
 `settings` -> `Secrets` -> `New repository secret`
+
+MEP fastify
+
+npm i --save @nestjs/platform-fastify
+
+https://github.com/nestjs/nest/blob/master/sample/10-fastify/src/main.ts
+
+/////
