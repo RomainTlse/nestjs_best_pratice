@@ -2,6 +2,5 @@
 . "$(dirname "$0")/_/husky.sh"
 
 npm run lint:hook
-npm run test:cov
+#npm run test:cov
 npx pretty-quick --staged
-
