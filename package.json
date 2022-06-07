@@ -1,6 +1,6 @@
 {
   "name": "nestjs_best_pratice",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "",
   "author": "",
   "private": true,
@@ -35,10 +35,13 @@
     "@nestjs/platform-express": "^8.0.0",
     "@nestjs/platform-fastify": "^8.4.5",
     "@nestjs/swagger": "^5.2.1",
+    "@nestjs/typeorm": "^8.0.4",
     "fastify-swagger": "^5.2.0",
+    "pg": "^8.7.3",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
-    "rxjs": "^7.2.0"
+    "rxjs": "^7.2.0",
+    "typeorm": "^0.2.45"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.0.0",

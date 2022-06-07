@@ -1,40 +1,58 @@
-version: '3.8'
-
+version: '3'
 services:
-  dev:
-    container_name: nestjs_api_dev
-    image: nestjs-api-dev:1.0.0
+  postgres:
+    container_name: postgres-db
+    image: postgres:latest
+    ports:
+      - '5432:5432'
+    volumes:
+      - /data/postgres:/data/postgres
+    env_file:
+      - docker.env
+    networks:
+      - postgres
+  nestjs:
     build:
       context: .
-      target: development
       dockerfile: ./Dockerfile
-    command: npm run start:debug
+    image: tusharchy/nest-and-postgres-application:latest
+    environment:
+      - DB_TYPE=${DB_TYPE}
+      - POSTGRES_HOST=${POSTGRES_HOST}
+      - POSTGRES_USER=${DATABASE_USER}
+      - POSTGRES_PASS=${DATABASE_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_SYNC=false
+      - JWT_SECRET=${JWT_SECRET}
+      - POSTGRES_PORT=${POSTGRES_PORT}
+      - APP_EXPIRES=${APP_EXPIRES}
+      - APP_PORT=${APP_PORT}
     ports:
-      - 3000:3000
-      - 9229:9229
-    networks:
-      - nesjs-network
+      - '3000:3000' # expose-to-the-world : only-in-the-docker
+    container_name: nest-todo-app-be
+    depends_on:
+      - postgres
     volumes:
-      - .:/usr/src/app
-      - /usr/src/app/node_modules
-    restart: unless-stopped
-  prod:
-    container_name: nestjs_api_prod
-    image: nestjs-api-prod:1.0.0
-    build:
-      context: .
-      target: production
-      dockerfile: ./Dockerfile
-    command: npm run start:prod
+      - .:/app
+      - /app/node_modules
+  pgadmin:
+    image: dpage/pgadmin4
+    restart: always
+    container_name: nest-pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL}
+      - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD}
+      - PGADMIN_LISTEN_PORT=${PGADMIN_LISTEN_PORT}
     ports:
-      - 3000:3000
-      - 9229:9229
-    networks:
-      - nesjs-network
+      - '8080:80'
     volumes:
-      - .:/usr/src/app
-      - /usr/src/app/node_modules
-    restart: unless-stopped
+      - ./pgadmin-data:/var/lib/pgadmin
+    depends_on:
+      - postgres
+volumes:
+  pgdata:
+  pgadmin-data:
 
 networks:
-  nesjs-network:
+  postgres:
+    driver: bridge

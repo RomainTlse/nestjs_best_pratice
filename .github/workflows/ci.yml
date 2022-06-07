@@ -17,8 +17,6 @@ jobs:
         run: npm run lint:ci
       - name: Prettier
         run: npm run format:check
-      - name: Test Unitaire 📋
-        run: npm run test:cov
       - name: Build 🛠
         run: npm run build
       - name: Archive build 🛠

@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## [1.0.0] 18/05/2022
+## [1.0.0] 24/05/2022
 
 ### Added
 
@@ -13,3 +13,4 @@
 - Mise en place Fastify
 - Mise en place de Swagger
 - Mise en place de Docker
+- Mise en place de PostgreSQL et Typeorm
